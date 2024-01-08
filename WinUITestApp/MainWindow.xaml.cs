@@ -1,17 +1,7 @@
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,11 +16,22 @@ namespace WinUITestApp
         public MainWindow()
         {
             this.InitializeComponent();
+
+            grid.PointerMoved += Grid_PointerMoved;
+            grid.PointerPressed += Grid_PointerPressed;
+            grid.PointerReleased += Grid_PointerReleased;
+            grid.PointerCanceled += Grid_PointerCanceled;
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
-        {
-            myButton.Content = "Clicked";
-        }
+        private void Grid_PointerMoved(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+
+        private void Grid_PointerPressed(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+
+        private void Grid_PointerReleased(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+
+        private void Grid_PointerCanceled(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+
+        private void PrintDebug(PointerRoutedEventArgs e, [CallerMemberName] string caller = "") => Debug.WriteLineIf(true, $"{caller} {e.Pointer.PointerId} {e.GetCurrentPoint(grid).Position:F1}");
     }
+
 }
