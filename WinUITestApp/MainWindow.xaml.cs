@@ -25,9 +25,17 @@ namespace WinUITestApp
 
         private void Grid_PointerMoved(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
 
-        private void Grid_PointerPressed(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+        private void Grid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            PrintDebug(e);
+            grid.CapturePointer(e.Pointer);
+        }
 
-        private void Grid_PointerReleased(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
+        private void Grid_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            PrintDebug(e);
+            grid.ReleasePointerCaptures();
+        }
 
         private void Grid_PointerCanceled(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
 

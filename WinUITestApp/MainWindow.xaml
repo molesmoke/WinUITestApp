@@ -9,6 +9,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TextBlock Text="Test"/>
+        <Button ToolTipService.ToolTip="Tooltip">Hello</Button>
+        <TextBlock>Test</TextBlock>
     </Grid>
 </Window>
