@@ -21,6 +21,13 @@ namespace WinUITestApp
             grid.PointerPressed += Grid_PointerPressed;
             grid.PointerReleased += Grid_PointerReleased;
             grid.PointerCanceled += Grid_PointerCanceled;
+
+            grid.KeyDown += Grid_KeyDown;
+        }
+
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            Debug.WriteLine(e.Key);
         }
 
         private void Grid_PointerMoved(object sender, PointerRoutedEventArgs e) => PrintDebug(e);
